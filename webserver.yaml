@@ -25,3 +25,6 @@ spec:
           name: webserver
           ports:
             - containerPort: 8080
+          env:
+            - name: DB_HOST
+              value: db-service
