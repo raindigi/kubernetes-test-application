@@ -2,7 +2,8 @@ const http = require('http');
 const MongoClient = require('mongodb').MongoClient;
 
 const port = 8080;
-const dbUri = "mongodb://localhost:27017";
+const dbHost = 'db-service';
+const dbUri = `mongodb://${dbHost}:27017`;
 
 function handler (request, response) {
   console.log("Received request from " + request.connection.remoteAddress);
