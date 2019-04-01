@@ -1,8 +1,9 @@
 const http = require('http');
 const MongoClient = require('mongodb').MongoClient;
 
-const port = 8080;
+const port = 8080
 const dbHost = process.env.DB_HOST;
+if (!dbHost) throw new Error("Error: DB_HOST environment variable is not set");
 const dbUri = `mongodb://${dbHost}:27017`;
 
 function handler (request, response) {

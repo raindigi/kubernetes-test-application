@@ -27,4 +27,7 @@ spec:
             - containerPort: 8080
           env:
             - name: DB_HOST
-              value: db-service
+              valueFrom:
+                configMapKeyRef:
+                  name: webserver-config
+                  key: DB_HOST
