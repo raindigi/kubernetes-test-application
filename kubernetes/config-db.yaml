@@ -1,7 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: config-db
-data:
-  DB_NAME: test-app
-  DB_COLLECTION: data

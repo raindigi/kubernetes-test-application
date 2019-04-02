@@ -28,15 +28,15 @@ spec:
             - name: DB_HOST
               valueFrom:
                 configMapKeyRef:
-                  name: config-webserver
+                  name: config
                   key: DB_HOST
             - name: DB_NAME
               valueFrom:
                 configMapKeyRef:
-                  name: config-db
+                  name: config
                   key: DB_NAME
             - name: DB_COLLECTION
               valueFrom:
                 configMapKeyRef:
-                  name: config-db
+                  name: config
                   key: DB_COLLECTION

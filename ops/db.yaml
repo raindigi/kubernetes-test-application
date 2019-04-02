@@ -41,12 +41,12 @@ spec:
             - name: DB_NAME
               valueFrom:
                 configMapKeyRef:
-                  name: config-db
+                  name: config
                   key: DB_NAME
             - name: DB_COLLECTION
               valueFrom:
                 configMapKeyRef:
-                  name: config-db
+                  name: config
                   key: DB_COLLECTION
       volumes:
         - name: db-data
