@@ -6,3 +6,4 @@ data:
   DB_HOST: db-service
   DB_NAME: test-app
   DB_COLLECTION: data
+  DB_STRING: This is the DB string
