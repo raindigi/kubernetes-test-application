@@ -1,16 +1,23 @@
 const http = require('http');
 const MongoClient = require('mongodb').MongoClient;
 
-
-checkEnvVar(process.env.DB_HOST, 'DB_HOST');
-checkEnvVar(process.env.DB_NAME, 'DB_NAME');
-checkEnvVar(process.env.DB_COLLECTION, 'DB_COLLECTION');
+const dbUsername = process.env.DB_USERNAME;
+const dbPassword = process.env.DB_PASSWORD;
 const dbHost = process.env.DB_HOST;
 const dbName = process.env.DB_NAME; 
 const dbCollection = process.env.DB_COLLECTION; 
+checkEnvVar(dbUsername, 'DB_USERNAME');
+checkEnvVar(dbPassword, 'DB_PASSWORD');
+checkEnvVar(dbHost, 'DB_HOST');
+checkEnvVar(dbName, 'DB_NAME');
+checkEnvVar(dbCollection, 'DB_COLLECTION');
+
+const dbUsernameSafe = encodeURIComponent(dbUsername);
+const dbPasswordSafe = encodeURIComponent(dbPassword);
 
 const port = 8080
-const dbUri = `mongodb://${dbHost}:27017`;
+// Connection URI: https://docs.mongodb.com/manual/reference/connection-string/
+const dbUri = `mongodb://${dbUsernameSafe}:${dbPasswordSafe}@${dbHost}:27017`;
 
 function handler (request, response) {
   console.log("Received request from " + request.connection.remoteAddress);
