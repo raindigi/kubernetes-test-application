@@ -3,5 +3,5 @@ kind: ConfigMap
 metadata:
   name: config-db
 data:
-  DB_NAME: html
-  DB_COLLECTION: html
+  DB_NAME: test-app
+  DB_COLLECTION: data

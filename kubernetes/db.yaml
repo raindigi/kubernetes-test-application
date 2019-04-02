@@ -30,13 +30,24 @@ spec:
         app: db
     spec:
       containers:
-        - image: mongo
+        - image: weibeld/test-db
           name: mongodb
           ports:
             - containerPort: 27017
           volumeMounts:
             - name: db-data
               mountPath: /data/db
+          env:
+            - name: DB_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: config-db
+                  key: DB_NAME
+            - name: DB_COLLECTION
+              valueFrom:
+                configMapKeyRef:
+                  name: config-db
+                  key: DB_COLLECTION
       volumes:
         - name: db-data
           persistentVolumeClaim:

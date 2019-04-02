@@ -35,10 +35,10 @@ async function getStringFromDb(fun) {
   const dbClient = new MongoClient(dbUri, {useNewUrlParser: true});
   await dbClient.connect();
   const collection = dbClient.db(dbName).collection(dbCollection);
-  const docs = await collection.find({index: {$exists: true}}).toArray();
+  const docs = await collection.find({data: {$exists: true}}).toArray();
   dbClient.close();
   if (docs.length < 1) throw new Error("String not found in database");
-  return docs[0].index;
+  return docs[0].data;
 }
 
 function checkEnvVar(value, name) {
