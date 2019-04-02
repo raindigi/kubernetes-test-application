@@ -3,7 +3,6 @@ kind: Service
 metadata:
   name: db-service
 spec:
-  type: ClusterIP
   selector:
     app: db
   ports:
@@ -25,7 +24,6 @@ kind: Deployment
 metadata:
   name: db
 spec:
-  replicas: 1
   template:
     metadata:
       labels:

@@ -14,7 +14,6 @@ kind: Deployment
 metadata:
   name: webserver
 spec:
-  replicas: 1
   template:
     metadata:
       labels:
