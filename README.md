@@ -6,17 +6,21 @@
 
 ## Explanation
 
-The files in this respository are divided into a `dev` and `ops` directory:
+The files in this respository are divided into a **Dev** and **Ops** section:
 
-- `dev`: Docker image definitions (i.e. the development artefacts of the application components, as produced by the *developers*)
-- `ops`: Kubernetes configurations (i.e. the code for deploying and operating the application, as produced by the *operators*).
+- **Dev:** contains the source code and Docker image definitions
+    - These are the development artefacts of the application components, as produced by the *developers*.
+- **Ops:** contains the Kubernetes configurations
+    - These are the code artefacts for deploying and operating the application, as produced by the *operators*.
 
-### `dev`
+## Dev
 
-This directory contains the source code and definitions for the Docker images of the two components of the application (database and web server):
+The [`dev`](dev) directory contains source code and Dockerfiles for the Docker images of the two application components:
 
 - [weibeld/test-mongodb](https://cloud.docker.com/u/weibeld/repository/docker/weibeld/test-mongodb)
 - [weibeld/test-webserver](https://cloud.docker.com/u/weibeld/repository/docker/weibeld/test-webserver)
+
+### Database
 
 The [weibeld/test-mongodb](https://cloud.docker.com/u/weibeld/repository/docker/weibeld/test-mongodb) image is a MongoDB database that only augments the standard [mongo](https://hub.docker.com/_/mongo) image with some default data that is automatically inserted into the database (the string that will be served by the web server).
 
@@ -28,6 +32,8 @@ The image requires the following environment variables:
 - `MONGODB_DB`: MongoDB database to save the default string to
 - `MONGODB_COLLECTION`: MongoDB collection to save he default string to
 
+### Web server
+
 The [weibeld/test-webserver](https://cloud.docker.com/u/weibeld/repository/docker/weibeld/test-webserver) image is a simple web server that listens on port 8080. On each request, the web server connects to the above MongoDB database, retrieves the default string, and returns it to the caller.
 
 This image requires the following environment variables:
@@ -38,7 +44,7 @@ This image requires the following environment variables:
 - `MONGODB_DB`: MongoDB database where the default string is saved
 - `MONGODB_COLLECTION`: MongoDB collection where the default string is saved
 
-#### Run locally
+### Run locally
 
 You can run the application locally with Docker as follows:
 
@@ -65,6 +71,6 @@ docker run -p 8080:8080 --network test-net \
   weibeld/test-webserver
 ~~~
 
-You can access the application at <http://127.0.0.1:8080>.
+Acces the application with `curl http://127.0.0.1:8080` or by opening <http://127.0.0.1:8080> in a web browser.
 
 ### Ops
