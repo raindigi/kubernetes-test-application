@@ -1,4 +1,4 @@
 #!/bin/bash
 
-TAG=weibeld/test-db
+TAG=weibeld/test-mongodb
 docker build -t "$TAG" . && docker push "$TAG"

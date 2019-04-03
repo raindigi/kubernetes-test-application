@@ -1,9 +1,17 @@
 apiVersion: v1
+kind: Secret
+metadata:
+  name: mongodb-credentials
+stringData:
+  MONGODB_USERNAME: admin
+  MONGODB_PASSWORD: secret
+---
+apiVersion: v1
 kind: ConfigMap
 metadata:
   name: config
 data:
-  DB_HOST: db-service
-  DB_NAME: test-app
-  DB_COLLECTION: data
-  DB_STRING: This is the DB string
+  MONGODB_HOST: mongodb-service
+  MONGODB_DB: test-app
+  MONGODB_COLLECTION: data
+  STRING: String that is saved in DB and served by webserver
